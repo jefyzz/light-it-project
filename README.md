@@ -1,7 +1,7 @@
 # Light-it Frontend Challenge
 
 The objective of this challenge is to create a frontend application that enables users to manage patient data. The application should have the following features:
-1. Retrieve a list of patient records from a this API.
+1. Retrieve a list of patient records from a this [API](https://63bedcf7f5cfc0949b634fc8.mockapi.io/users).
 2. Display the patient records individually in cards within a user interface.
 3. Each patient card should include a button or icon that allows users to view additional details (expand/collapse).
 4. Implement a modal or a similar component to edit and add patient information.
