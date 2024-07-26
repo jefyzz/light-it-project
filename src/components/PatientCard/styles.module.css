@@ -1,59 +1,116 @@
 .container {
   border: 1px solid #999;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  max-width: 260px;
+  max-width: 550px;
+  min-width: 550px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
 .img {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  max-width: 80px;
+  height: 80px;
   object-fit: cover;
+  align-self: flex-start;
+}
+
+.id {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  margin: 0;
 }
 
 .textContainer {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  gap: 2px;
+  gap: 10px;
   width: 100%;
-  padding: 0 8px;
-  text-align: left;
 }
 
-.name {
-  font-size: 1rem;
-  font-weight: 600;
-  width: 100%;
-  margin-bottom: 0;
-  text-overflow: ellipsis;
+.label {
+  font-weight: bold;
+  margin: 0;
+  min-width: 100px;
+  text-align: left;
+  align-self: flex-start;
+  font-size: 18px;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.id {
-  font-size: 1.2rem;
-  font-weight: 400;
+.name {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+}
+
+.description {
   text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  overflow: hidden;
+  white-space: normal;
+  display: flex;
+  align-items: center;
+}
+
+.showMore {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 0.9rem;
+  white-space: pre;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   width: 100%;
-  margin-top: 0;
 }
 
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
+  align-self: flex-end;
   background-color: transparent;
   border: 0;
 }
@@ -62,7 +119,6 @@
   background-color: #2f506d;
   transition-duration: 0.5s;
 }
-
 
 .details {
   display: flex;
@@ -82,18 +138,9 @@
   width: 100%;
 }
 
-.label {
-  font-weight: bold;
-  margin: 0;
-  min-width: 100px;
-  text-align: left;
-  align-self: flex-start;
-}
-
 .value {
   margin: 0;
   text-align: right;
   align-self: flex-end;
   width: 100%;
 }
-
