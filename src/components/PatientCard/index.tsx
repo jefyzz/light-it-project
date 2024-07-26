@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 const PatientCard = ({ patient }: { patient: Patient }) => {
   const [showDetails, setShowDetails] = useState(false);
-
+  const date = new Date(patient.createdAt);
   return (
     <div className={styles.container}>
       <img src={patient.avatar} alt={patient.name} className={styles.img} />
@@ -31,21 +31,18 @@ const PatientCard = ({ patient }: { patient: Patient }) => {
       </button>
       {showDetails && (
         <div className={styles.details}>
-          {patient.details.map((detail) => (
-            <div className={styles.detailRow} key={detail.label}>
-              <p className={styles.label}>{detail.label}:</p>
-              {detail.value.startsWith("http") ? (
-                <a
-                  href={detail.value}
-                  className={styles.value}
-                >
-                  {detail.value}
-                </a>
-              ) : (
-                <p className={styles.value}>{detail.value}</p>
-              )}
-            </div>
-          ))}
+          <div className={styles.detailRow}>
+            <p className={styles.label}>Created At:</p>
+            <p className={styles.value}>{date.toLocaleDateString()}</p>
+          </div>
+          <div className={styles.detailRow}>
+            <p className={styles.label}>Description:</p>
+            <p className={styles.value}>{patient.description}</p>
+          </div>
+          <div className={styles.detailRow}>
+            <p className={styles.label}>Website:</p>
+            <p className={styles.value}>{patient.website}</p>
+          </div>
         </div>
       )}
     </div>
