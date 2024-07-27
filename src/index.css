@@ -1,3 +1,13 @@
+/* 
+  Palette:
+  #1d212f - Background
+  #ffffff - Text
+  #878df8 - Anchor
+  #d7f139 - Anchor Hover
+  #6ab1fd - Text Button
+  #d7f139 - Accent
+ */
+ 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,22 +21,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* 
 
-#fad1ff	(250,209,255) pink
-#ce81b7	(206,129,183) magenta
-#587dbd	(88,125,189) blue
-#7aa6c7	(122,166,199) light blue
-#afdafb	(175,218,251) ligher blue
-
- */
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #878df8;
   text-decoration: inherit;
 }
 a:hover {
-  color: #ce81b7;
+  color: #d7f139;
 }
 
 body {

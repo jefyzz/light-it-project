@@ -1,6 +1,6 @@
 .container {
-  border: 1px solid #999;
-  border-radius: 16px;
+  border: 1.5px solid #d7f139;
+  mask: radial-gradient(6px at 40px 40px, transparent 80%, black) -40px -40px;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
   justify-content: center;
   max-width: 550px;
   min-width: 550px;
+  align-self: start; /* Ensures each card aligns itself independently */
 }
 
 .header {
@@ -21,21 +22,20 @@
 
 .img {
   border-radius: 50%;
-  width: 80px;
-  max-width: 80px;
-  height: 80px;
+  width: 120px;
+  max-width: 120px;
+  height: 120px;
   object-fit: cover;
   align-self: flex-start;
 }
 
 .id {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+  justify-content: flex-start;
+  align-self: flex-start;
   font-size: 1.2rem;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
   width: 100%;
   margin: 0;
 }
@@ -81,17 +81,27 @@
   white-space: normal;
   display: flex;
   align-items: center;
+  max-height: 5em;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.description.expanded {
+  max-height: 100em;
 }
 
 .showMore {
   align-self: flex-end;
   background: none;
   border: none;
-  color: #007bff;
+  color: #6ab1fd;
   cursor: pointer;
   margin-left: 5px;
   font-size: 0.9rem;
   white-space: pre;
+}
+
+.showMore:hover {
+  color: #d7f139;
 }
 
 .buttonsContainer {
@@ -99,6 +109,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  width: 100%;
+}
+
+.subtextContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
   width: 100%;
 }
 
