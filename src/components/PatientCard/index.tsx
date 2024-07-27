@@ -126,7 +126,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
               </g>
             </g>
           </svg>
-          {date.toLocaleString()}
+          <p className={styles.secondaryText}>{date.toLocaleString()}</p>
         </span>
       </section>
       <section className={styles.buttonsContainer}></section>

@@ -6,9 +6,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 550px;
-  min-width: 550px;
-  align-self: start; /* Ensures each card aligns itself independently */
+  align-self: start;
+  @media (max-width: 768px) {
+    align-self: center;
+    padding: 16px;
+  }
+  @media (max-width: 480px) {
+    padding: 12px;
+  }
 }
 
 .header {
@@ -27,6 +32,16 @@
   height: 120px;
   object-fit: cover;
   align-self: flex-start;
+  @media (max-width: 768px) {
+    width: 80px;
+    max-width: 80px;
+    height: 80px;
+  }
+  @media (max-width: 480px) {
+    width: 60px;
+    max-width: 60px;
+    height: 60px;
+  }
 }
 
 .id {
@@ -38,6 +53,12 @@
   text-align: left;
   width: 100%;
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 }
 
 .textContainer {
@@ -70,6 +91,13 @@
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 }
 
 .description {
@@ -83,6 +111,12 @@
   align-items: center;
   max-height: 5em;
   transition: max-height 0.5s ease-in-out;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 }
 
 .description.expanded {
@@ -98,6 +132,12 @@
   margin-left: 5px;
   font-size: 0.9rem;
   white-space: pre;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 }
 
 .showMore:hover {
@@ -119,6 +159,21 @@
   justify-content: flex-start;
   gap: 10px;
   width: 100%;
+}
+
+.secondaryText {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+  align-self: flex-start;
+  color: #9C9CAB;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 }
 
 .icon {
