@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import { Patient } from "../../interfaces/patient";
 import styles from "./styles.module.css";
 
-const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
+const PatientCard: React.FC<{
+  patient: Patient;
+  setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedPatient: React.Dispatch<React.SetStateAction<Patient | null>>;
+}> = ({ patient, setShowEditModal, setSelectedPatient }) => {
   const [showMore, setShowMore] = useState(false);
   const date = new Date(patient.createdAt);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
+  };
+
+  const handleEditModal = () => {
+    setSelectedPatient(patient);
+    setShowEditModal(true);
   };
 
   return (
@@ -129,21 +138,14 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
           <p className={styles.secondaryText}>{date.toLocaleString()}</p>
         </span>
       </section>
-      <section className={styles.buttonsContainer}></section>
-    </div>
-  );
-};
-
-export default PatientCard;
-
-{
-  /* <button onClick={() => console.log('open edit modal')} className={styles.icon}>
+      <section className={styles.buttonsContainer}>
+        <span onClick={handleEditModal} className={styles.icon}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="28"
-            height="28"
+            width="20"
+            height="20"
             viewBox="0,0,256,256"
           >
             <g
@@ -167,5 +169,10 @@ export default PatientCard;
               </g>
             </g>
           </svg>
-        </button> */
-}
+        </span>
+      </section>
+    </div>
+  );
+};
+
+export default PatientCard;

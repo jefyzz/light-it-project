@@ -1,59 +1,41 @@
+import React from "react";
 import styles from "./styles.module.css";
 
-function Modal({
+interface ModalProps {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  header: React.ReactNode;
+  body: React.ReactNode;
+  footer: React.ReactNode;
+}
+
+// TODO: finish styling the modal
+// TODO: right now, the modal opens fixed on the position 0 0, but it should open in the center of the screen
+
+const Modal: React.FC<ModalProps> = ({
   setOpenModal,
-}: {
-  readonly setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+  header,
+  body,
+  footer,
+}) => {
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
   return (
-    <div className={styles.modalBackground}>
-      <div className={styles.modalContainer}>
+    <div className={styles.modalBackground} onClick={closeModal}>
+      <div
+        className={styles.modalContainer}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.titleCloseBtn}>
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-          >
-            X
-          </button>
+          <button onClick={closeModal} className={styles.closeBtn}>X</button>
         </div>
-        <div className={styles.title}>
-          <h1>Are You Sure You Want to Continue?</h1>
-        </div>
-        <div className={styles.body}>
-          <p>The next page looks amazing. Hope you want to go there!</p>
-        </div>
-        <div className={styles.footer}>
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-          <button>Continue</button>
-        </div>
+        <div className={styles.header}>{header}</div>
+        <div className={styles.body}>{body}</div>
+        <div className={styles.footer}>{footer}</div>
       </div>
     </div>
   );
-}
+};
 
 export default Modal;
-
-/*
-<div className={styles.details}>
-          <div className={styles.detailRow}>
-            <p className={styles.label}>Created At:</p>
-            <p className={styles.value}>{date.toLocaleDateString()}</p>
-          </div>
-          <div className={styles.detailRow}>
-            <p className={styles.label}>Description:</p>
-            <p className={styles.value}>{patient.description}</p>
-          </div>
-          <div className={styles.detailRow}>
-            <p className={styles.label}>Website:</p>
-            <p className={styles.value}>{patient.website}</p>
-          </div>
-        </div>
-*/

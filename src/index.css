@@ -5,6 +5,7 @@
   #9C9CAB - Text Secondary
   #878df8 - Anchor
   #d7f139 - Anchor Hover
+  #6C28F6 - Button backgorund
   #6ab1fd - Text Button
   #d7f139 - Accent
  */
@@ -30,6 +31,12 @@ a {
 }
 a:hover {
   color: #d7f139;
+  transition: color 0.3s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 body {

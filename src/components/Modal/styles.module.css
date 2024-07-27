@@ -1,8 +1,15 @@
+/* 
+  Modal boilerplate taken from here: https://github.com/machadop1407/React-Modal-Tutorial
+  It was then modified by myself to match my needs. 
+*/
+
 .modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: #7aa6c750;
-  position: fixed;
+  background-color: #1d212f99;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,19 +18,14 @@
 
 .modalContainer {
   width: 500px;
-  height: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
   border-radius: 12px;
   background-color: #1d212f;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   padding: 25px;
-}
-
-.modalContainer .title {
-  display: inline-block;
-  text-align: center;
-  margin-top: 10px;
 }
 
 .titleCloseBtn {
@@ -38,8 +40,14 @@
   cursor: pointer;
 }
 
-.modalContainer .body {
-  flex: 50%;
+.header {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.body {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,25 +55,25 @@
   text-align: center;
 }
 
-.modalContainer .footer {
-  flex: 20%;
+.footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-.modalContainer .footer button {
+.footer button {
   width: 150px;
   height: 45px;
   margin: 10px;
   border: none;
-  background-color: cornflowerblue;
-  color: white;
+  background-color: #6C28F6;
+  color: #fff;
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
 }
 
-#cancelBtn {
-  background-color: crimson;
+.closeBtn {
+  color: #d7f139;
 }

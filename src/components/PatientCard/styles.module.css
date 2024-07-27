@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   max-height: 5em;
-  transition: max-height 0.5s ease-in-out;
+  transition: max-height 1s ease-in-out;
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
@@ -167,7 +167,7 @@
   margin: 0;
   text-align: left;
   align-self: flex-start;
-  color: #9C9CAB;
+  color: #9c9cab;
   @media (max-width: 768px) {
     font-size: 0.8rem;
   }
@@ -177,13 +177,13 @@
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: center;
   align-self: flex-end;
   background-color: transparent;
   border: 0;
