@@ -1,12 +1,6 @@
 import React from "react";
+import { ModalProps } from "../../interfaces/components";
 import styles from "./styles.module.css";
-
-interface ModalProps {
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  body: React.ReactNode;
-  footer: React.ReactNode;
-}
 
 const Modal: React.FC<ModalProps> = ({ setOpenModal, title, body, footer }) => {
   const closeModal = () => {

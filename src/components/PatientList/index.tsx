@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import PatientCard from "../PatientCard";
 import Modal from "../Modal";
-import styles from "./styles.module.css";
-import { Patient } from "../../interfaces/patient";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
+import { Patient } from "../../interfaces/patient";
+import styles from "./styles.module.css";
 
 const API_URL = "https://63bedcf7f5cfc0949b634fc8.mockapi.io/users";
 
 const PatientList = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState<"add" | "edit">("edit");
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
 
   useEffect(() => {
@@ -33,7 +34,20 @@ const PatientList = () => {
         patient.id === selectedPatient.id ? selectedPatient : patient
       );
       setPatients(updatedPatients);
-      setShowEditModal(false);
+      setShowModal(false);
+    }
+  };
+
+  const handleAddPatientChanges = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedPatient) {
+      const newPatient = {
+        ...selectedPatient,
+        id: `${patients.length + 1}`,
+        createdAt: new Date().toISOString(),
+      };
+      setPatients([...patients, newPatient]);
+      setShowModal(false);
     }
   };
 
@@ -47,39 +61,64 @@ const PatientList = () => {
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
+  };
+
+  const handleAddPatient = () => {
+    const newPatient: Patient = {
+      id: `${patients.length + 1}`,
+      name: "",
+      avatar: "",
+      createdAt: "",
+      description: "",
+      website: "",
+    };
+    setSelectedPatient(newPatient);
+    setModalType("add");
+    setShowModal(true);
   };
 
   return (
-    <div className={styles.main}>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        patients.map((patient) => (
-          <PatientCard
-            key={patient.id}
-            patient={patient}
-            setShowEditModal={setShowEditModal}
-            setSelectedPatient={setSelectedPatient}
-          />
-        ))
-      )}
-      {showEditModal && (
-        <Modal
-          key={selectedPatient?.id ?? "non-existent"}
-          setOpenModal={setShowEditModal}
-          title="Edit Patient"
-          body={
-            <ModalBody
-              handleSaveChanges={handleSaveChanges}
-              handleInputChange={handleInputChange}
-              selectedPatient={selectedPatient}
+    <>
+      <button onClick={handleAddPatient}>Add new patient</button>
+      <div className={styles.main}>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          patients.map((patient) => (
+            <PatientCard
+              key={patient.id}
+              patient={patient}
+              setShowModal={(show) => {
+                setSelectedPatient(patient);
+                setModalType("edit");
+                setShowModal(show);
+              }}
+              setSelectedPatient={setSelectedPatient}
             />
-          }
-          footer={<ModalFooter handleCloseModal={handleCloseModal} />}
-        />
-      )}
-    </div>
+          ))
+        )}
+        {showModal && (
+          <Modal
+            key={selectedPatient?.id ?? "non-existent"}
+            setOpenModal={setShowModal}
+            title={modalType === "edit" ? "Edit Patient" : "Add Patient"}
+            body={
+              <ModalBody
+                handleSaveChanges={
+                  modalType === "edit"
+                    ? handleSaveChanges
+                    : handleAddPatientChanges
+                }
+                handleInputChange={handleInputChange}
+                selectedPatient={selectedPatient}
+              />
+            }
+            footer={<ModalFooter handleCloseModal={handleCloseModal} />}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

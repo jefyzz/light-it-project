@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Patient } from "../../interfaces/patient";
+import { PatientCardProps } from "../../interfaces/components";
 import styles from "./styles.module.css";
 
-const PatientCard: React.FC<{
-  patient: Patient;
-  setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelectedPatient: React.Dispatch<React.SetStateAction<Patient | null>>;
-}> = ({ patient, setShowEditModal, setSelectedPatient }) => {
+const PatientCard: React.FC<PatientCardProps> = ({
+  patient,
+  setShowModal,
+  setSelectedPatient,
+}) => {
   const [showMore, setShowMore] = useState(false);
   const date = new Date(patient.createdAt);
 
@@ -16,7 +16,7 @@ const PatientCard: React.FC<{
 
   const handleEditModal = () => {
     setSelectedPatient(patient);
-    setShowEditModal(true);
+    setShowModal(true);
   };
 
   return (
@@ -63,15 +63,18 @@ const PatientCard: React.FC<{
           </svg>
           <p className={styles.name}>{patient.name}</p>
         </span>
+
         <p
           className={`${styles.description} ${showMore ? styles.expanded : ""}`}
         >
           {showMore
             ? patient.description
-            : `${patient.description.substring(0, 100)}...`}
-          <button onClick={toggleShowMore} className={styles.showMore}>
-            {showMore ? "Show less" : "Show more"}
-          </button>
+            : `${patient.description.substring(0, 90)}...`}
+          {patient.description.length > 90 && (
+            <button onClick={toggleShowMore} className={styles.showMore}>
+              {showMore ? "Show less" : "Show more"}
+            </button>
+          )}
         </p>
         <span className={styles.subtextContainer}>
           <svg

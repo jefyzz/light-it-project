@@ -1,14 +1,6 @@
-import React, { useState } from "react";
-import { Patient } from "../../../interfaces/patient";
+import { useState } from "react";
+import { ModalBodyProps } from "../../../interfaces/components";
 import styles from "./styles.module.css";
-
-interface ModalBodyProps {
-  handleSaveChanges: (e: React.FormEvent) => void;
-  selectedPatient: Patient | null;
-  handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-}
 
 const ModalBody = ({
   handleSaveChanges,
